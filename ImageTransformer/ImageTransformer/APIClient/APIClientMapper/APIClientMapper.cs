@@ -12,7 +12,7 @@ namespace ImageTransformer.APIClient.APIClientMapper
     public class APIClientMapper
     {
 
-         public static APIClientModels.FetchGlobalEmotesIdModel MapAPIClientIdJson(string data)
+         public static List<APIClientModels.FetchGlobalEmotesIdModel> MapAPIClientIdJson(string data)
         {
 
             List<APIClientModels.FetchGlobalEmotesIdModel> list = new List<APIClientModels.FetchGlobalEmotesIdModel>();
@@ -31,12 +31,26 @@ namespace ImageTransformer.APIClient.APIClientMapper
 
                         if (property != null && property.Name == "id")
                         {
-                            
+                            tmp.id = (int)property.Value;
                         }
+                        if (property != null && property.Name == "code")
+                        {
+                            tmp.code = (string)property.Value;
+                        }
+                        if (property != null && property.Name == "emoticon_set")
+                        {
+                            tmp.emoticon_set = (int?)property.Value;
+                        }
+                        if (property != null && property.Name == "description")
+                        {
+                            tmp.description = (string)property.Value;
+                        }
+
                     }
+                    list.Add(tmp);
                 }
             }   
-            return null;
+            return list;
         }
 
     }

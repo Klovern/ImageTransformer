@@ -9,7 +9,14 @@ namespace ImageTransformer.APIClient
 
         public class FetchGlobalEmotesIdModel
         {
-            public List<FetchGlobalEmotesIdsModelData> response { get; set; }
+            public int id { get; set; }
+
+            public string code { get; set; }
+
+            public int? emoticon_set { get; set; }
+
+            public string description { get; set; }
+
         }
 
         public class FetchGlobalEmotesIdsModelData

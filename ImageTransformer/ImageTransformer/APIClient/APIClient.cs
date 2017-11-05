@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using ImageTransformer.APIClient.APIClientMapper;
@@ -19,15 +20,32 @@ namespace ImageTransformer.APIClient
             this.client = new HttpClient();
             this.client.DefaultRequestHeaders.Accept.Clear();
             this.client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+                new MediaTypeWithQualityHeaderValue("application/vnd.twitchtv.v5+json"));
             this.client.DefaultRequestHeaders.Add("User-Agent", "ImageTransformer .NET");
         }
 
 
         public async Task<string> FetchGlobalEmotes()
         {
-            string path = "https://api.twitch.tv/kraken/chat/emoticon_images";
-            return await this.client.GetStringAsync(path);
+            string path = string.Format("https://api.twitch.tv/kraken/chat/emoticons", Config.TwitchAuth.ClientId , 0);
+            string emotes = await this.client.GetStringAsync(path);
+            Console.WriteLine();
+            return emotes;
+        }
+
+        public async Task<string> FetchSpecificEmoteFromID(int id, double size)
+        {
+            string path = string.Format("http://static-cdn.jtvnw.net/emoticons/v1/{0}/{1}", id, size);
+            string emotes = await this.client.GetStringAsync(path);
+            return emotes;
+        }
+
+
+        public async Task<byte[]> FetchEmoteByteData(int id, double size)
+        {
+            string path = string.Format("http://static-cdn.jtvnw.net/emoticons/v1/{0}/{1}.0", id, size);
+            byte[] emotes = await this.client.GetByteArrayAsync(path);
+            return emotes;
         }
 
 
@@ -47,12 +65,12 @@ namespace ImageTransformer.APIClient
             }
         }
         */
-        public async Task<APIClientModels.FetchGlobalEmotesIdModel> FetchGlobalEmotesIds()
+        public async Task<List<APIClientModels.FetchGlobalEmotesIdModel>> FetchGlobalEmotesIds()
         {
             string path = "https://twitchemotes.com/api_cache/v3/global.json";
             string data = await this.client.GetStringAsync(path);
 
-            APIClientModels.FetchGlobalEmotesIdModel _MappedData = APIClientMapper.APIClientMapper.MapAPIClientIdJson(data);
+            List<APIClientModels.FetchGlobalEmotesIdModel> _MappedData = APIClientMapper.APIClientMapper.MapAPIClientIdJson(data);
 
             return _MappedData;
         }

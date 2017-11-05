@@ -54,6 +54,9 @@
     <Compile Include="APIClient\APIClient.cs" />
     <Compile Include="APIClient\APIClientMapper\APIClientMapper.cs" />
     <Compile Include="APIClient\APIClientModels\APIClientModels.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="FileStreams\FileStreams.cs" />
+    <Compile Include="FillEmotes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,7 +64,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Emotes\Global\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

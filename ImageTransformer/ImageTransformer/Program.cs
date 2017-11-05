@@ -14,11 +14,7 @@ namespace ImageTransformer
     {
         static void Main(string[] args)
         {
-            var APIClient = new APIClient.APIClient();
-
-            var result = Task.Run(async () => { return await APIClient.FetchGlobalEmotesIds(); }).Result;
-            Console.WriteLine();
-
+            FillEmotes.FillGlobalEmotesToDisk();
 
             Console.ReadLine();
         }
