@@ -16,18 +16,24 @@ namespace ImageTransformer.FileStreams
             fileStream.Dispose();
         }
 
-        public static Boolean WriteToDisk(byte[] data, string path, string name, string extension)
+        public static string WriteToDisk(byte[] data, string path, string name, string extension)
         {
             string _path = String.Format("{0}\\{1}.{2}", path, name, extension);
+
+            if (File.Exists(_path))
+            {
+                File.Delete(_path);
+            }
+
             try
             {
                 System.IO.File.WriteAllBytes(_path, data);
             }
             catch (Exception e)
             {
-                return false;
+                return null;
             }
-            return true;
+            return _path;
 
         }
     }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace ImageTransformer
 {
@@ -21,9 +23,16 @@ namespace ImageTransformer
             {
                 var binary = Task.Run(async () => { return await APIClient.FetchEmoteByteData(emote.id, 1.0); }).Result;
 
-                FileStreams.FileStreams.WriteToDisk(binary, path, emote.code, "png");
+                var _path = FileStreams.FileStreams.WriteToDisk(binary, path, emote.code, "png");
+
+                Colormapping.Colormapping.MapEmotesToColor(_path, emote.code);
             }
 
+            foreach (var emote in Colormapping.Colormapping.GetEmoteList())
+            {
+                Console.WriteLine(String.Format("{0} :  R {1} G {2} B {3} A {4}", emote.code, emote.red, emote.green, emote.blue, emote.apacity));
+            }
+            Console.ReadLine();
 
         }
     }

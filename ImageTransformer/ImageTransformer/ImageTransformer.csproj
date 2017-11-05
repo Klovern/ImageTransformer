@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -54,6 +55,8 @@
     <Compile Include="APIClient\APIClient.cs" />
     <Compile Include="APIClient\APIClientMapper\APIClientMapper.cs" />
     <Compile Include="APIClient\APIClientModels\APIClientModels.cs" />
+    <Compile Include="Colormapping\Colormapping.cs" />
+    <Compile Include="Colormapping\ColormappingModels\ColormappingModels.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="FileStreams\FileStreams.cs" />
     <Compile Include="FillEmotes.cs" />
