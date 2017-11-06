@@ -57,6 +57,7 @@
     <Compile Include="APIClient\APIClientMapper\APIClientMapper.cs" />
     <Compile Include="APIClient\APIClientModels\APIClientModels.cs" />
     <Compile Include="Canvas\DrawColors.cs" />
+    <Compile Include="Canvas\DrawImageFromEmotes.cs" />
     <Compile Include="Colormapping\Colormapping.cs" />
     <Compile Include="Colormapping\ColormappingModels\ColormappingModels.cs" />
     <Compile Include="Config.cs" />
@@ -72,6 +73,7 @@
   <ItemGroup>
     <Folder Include="EmoteMapping\" />
     <Folder Include="Emotes\Global\" />
+    <Folder Include="Media\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
