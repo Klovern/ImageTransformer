@@ -13,15 +13,15 @@ namespace ImageTransformer.Colormapping
     public static class Colormapping
     {
        
-        static List<ColormappingModels.ColormappingModels.GlobalEmotesMap> emoteList = new List<ColormappingModels.ColormappingModels.GlobalEmotesMap>();
+        static List<ColormappingModels.ColormappingModels.EmoteMap> emoteList = new List<ColormappingModels.ColormappingModels.EmoteMap>();
 
-        public static List<ColormappingModels.ColormappingModels.GlobalEmotesMap> GetEmoteList()
+        public static List<ColormappingModels.ColormappingModels.EmoteMap> GetEmoteList()
         {
             return emoteList;
         }
         public static void MapEmotesToColor(string path, string code)
         {
-            ColormappingModels.ColormappingModels.GlobalEmotesMap tmp = new ColormappingModels.ColormappingModels.GlobalEmotesMap();
+            ColormappingModels.ColormappingModels.EmoteMap tmp = new ColormappingModels.ColormappingModels.EmoteMap();
             Bitmap bmp = new Bitmap(1, 1);
             Bitmap orig = (Bitmap) Bitmap.FromFile(path);
             using (Graphics g = Graphics.FromImage(bmp))
@@ -40,7 +40,7 @@ namespace ImageTransformer.Colormapping
             tmp.red = pixel.R;
             tmp.green = pixel.G;
             tmp.blue = pixel.B;
-            tmp.apacity = pixel.A;
+            tmp.alpha = pixel.A;
             emoteList.Add(tmp);
         }
 

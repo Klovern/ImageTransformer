@@ -44,6 +44,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,7 @@
     <Compile Include="APIClient\APIClient.cs" />
     <Compile Include="APIClient\APIClientMapper\APIClientMapper.cs" />
     <Compile Include="APIClient\APIClientModels\APIClientModels.cs" />
+    <Compile Include="Canvas\DrawColors.cs" />
     <Compile Include="Colormapping\Colormapping.cs" />
     <Compile Include="Colormapping\ColormappingModels\ColormappingModels.cs" />
     <Compile Include="Config.cs" />
@@ -68,6 +70,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="EmoteMapping\" />
     <Folder Include="Emotes\Global\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ImageTransformer
 {
@@ -28,12 +29,11 @@ namespace ImageTransformer
                 Colormapping.Colormapping.MapEmotesToColor(_path, emote.code);
             }
 
-            foreach (var emote in Colormapping.Colormapping.GetEmoteList())
-            {
-                Console.WriteLine(String.Format("{0} :  R {1} G {2} B {3} A {4}", emote.code, emote.red, emote.green, emote.blue, emote.apacity));
-            }
+            Canvas.DrawColors.CreateEmoteRgbaChart(Colormapping.Colormapping.GetEmoteList());
+
             Console.ReadLine();
 
         }
+
     }
 }
