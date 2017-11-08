@@ -18,8 +18,11 @@ namespace ImageTransformer.Canvas
         public static void PrintEmoteRGBA()
         {
             var emotes = Colormapping.Colormapping.GetEmoteList();
-            Bitmap bmp = new Bitmap("C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media\\llama.jpg");
 
+            string imageUrl = "C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media\\Donald2.jpg";
+            string output = "DonaldTrump.jpg";
+            Bitmap bmp = new Bitmap(imageUrl);
+            Bitmap bmp2 = new Bitmap(imageUrl);
             // Lock the bitmap's bits.  
             Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
             BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
@@ -27,6 +30,8 @@ namespace ImageTransformer.Canvas
             // Get the address of the first line.
             IntPtr ptr = bmpData.Scan0;
 
+            int accuracy = 10;
+            float sizeOperator = 1 ;
             // Declare an array to hold the bytes of the bitmap.
             int bytes = bmpData.Stride * bmp.Height;
             byte[] rgbValues = new byte[bytes];
@@ -40,32 +45,48 @@ namespace ImageTransformer.Canvas
             int count = 0;
             int stride = bmpData.Stride;
 
-            for (int column = 0; column < bmpData.Height; column++)
+            for (int column = 0; column < bmpData.Height; column += accuracy)
             {
-                for (int row = 0; row < bmpData.Width; row++)
+                for (int row = 0; row < bmpData.Width; row += accuracy)
                 {
+                    Console.WriteLine($"COLUMN {column} ROW {row}");
                     var blue = (byte)(rgbValues[(column * stride) + (row * 3)]);
                     var green = (byte)(rgbValues[(column * stride) + (row * 3) + 1]);
                     var red = (byte)(rgbValues[(column * stride) + (row * 3) + 2]);
 
-                    var tmp = new List<Colormapping.ColormappingModels.ColormappingModels.EmoteMap>();
-                    for (int i = 0; i < 25; i++)
+                    var tmp = new Colormapping.ColormappingModels.ColormappingModels.EmoteMap();
+                    for (int i = 1; i < 25; i++)
                     {
-                        if (tmp.Any())
+                        if (tmp.code != null)
                         {
                             break;
                         }
 
-                        tmp = emotes.Where(x => x.red > red - i * 10 || x.red < red + i * 10 && x.green > green - i * 10 || x.green < green + i * 10 && x.blue > blue - i * 10 || x.blue < blue + i * 10).Take(1).ToList();
+                        tmp = (Colormapping.ColormappingModels.ColormappingModels.EmoteMap)emotes.Where(x => x.red > red - i * 10 && x.red < red + i * 10).
+                            Where(x => x.green > green - i * 10 && x.green < green + i * 10).Where(x => x.blue > blue - i * 10 && x.blue < blue + i * 10).DefaultIfEmpty().First(); ;
+                       
+
+                        // Ugly fix
+                        if(tmp == null)
+                        {
+                            tmp = new Colormapping.ColormappingModels.ColormappingModels.EmoteMap();
+                        }
                     }
 
-                    foreach (var VARIABLE in tmp)
+                    Image emote = Image.FromFile(tmp.path);
+                    
+                    using (Graphics graphicss = Graphics.FromImage(bmp2))
                     {
-                        Console.WriteLine($"{VARIABLE.code}");
-
+                        graphicss.DrawImage(emote, row, column, accuracy * sizeOperator, accuracy* sizeOperator);
                     }
+                   // Console.WriteLine(tmp.code);
+                    
                 }
+                
             }
+
+            bmp2.Save(output, System.Drawing.Imaging.ImageFormat.Jpeg);
+            Console.WriteLine("Saved");
         }
     }
 }

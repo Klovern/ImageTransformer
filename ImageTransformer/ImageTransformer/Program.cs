@@ -14,9 +14,9 @@ namespace ImageTransformer
     {
         static void Main(string[] args)
         {
-            ConsoleKeyInfo keyInfo = Console.ReadKey();
-            /*Canvas.DrawImageFromEmotes.PrintEmoteRGBA();
-            FillEmotes.FillGlobalEmotesToDisk();*/
+            FillEmotes.FillGlobalEmotesToDisk();
+            Canvas.DrawImageFromEmotes.PrintEmoteRGBA();
+           
 
 
             Console.ReadLine();

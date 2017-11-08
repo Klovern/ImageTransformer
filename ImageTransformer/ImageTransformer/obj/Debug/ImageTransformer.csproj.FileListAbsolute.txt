@@ -8,12 +8,11 @@ C:\Users\s4d\Documents\GitHub\opensource-manager\ImageTransformer\ImageTransform
 C:\Users\s4d\Documents\GitHub\opensource-manager\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.exe
 C:\Users\s4d\Documents\GitHub\opensource-manager\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.pdb
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\ImageTransformer.exe.config
-C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.exe
-C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.pdb
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\ImageTransformer.exe
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\ImageTransformer.pdb
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\Newtonsoft.Json.dll
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\Newtonsoft.Json.xml
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\System.Net.Http.Formatting.xml
-C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.csprojResolveAssemblyReference.cache
+C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.exe
+C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.pdb

@@ -31,7 +31,7 @@ namespace ImageTransformer
 
             Canvas.DrawColors.CreateEmoteRgbaChart(Colormapping.Colormapping.GetEmoteList());
 
-            Console.ReadLine();
+        
 
         }
 
