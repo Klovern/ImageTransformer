@@ -20,9 +20,12 @@ namespace ImageTransformer.Canvas
             var emotes = Colormapping.Colormapping.GetEmoteList();
 
             string imageUrl = "C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media\\Donald2.jpg";
-            string output = "DonaldTrump.jpg";
+            string output = "DonaldTrumpBlank.jpg";
             Bitmap bmp = new Bitmap(imageUrl);
             Bitmap bmp2 = new Bitmap(imageUrl);
+            float sizeOperator = 2;
+            int colorAccuracy = 10;
+            Bitmap bmpBlank = new Bitmap(bmp.Width * (int)sizeOperator, bmp.Height * (int)sizeOperator);
             // Lock the bitmap's bits.  
             Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
             BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
@@ -31,7 +34,7 @@ namespace ImageTransformer.Canvas
             IntPtr ptr = bmpData.Scan0;
 
             int accuracy = 10;
-            float sizeOperator = 1 ;
+
             // Declare an array to hold the bytes of the bitmap.
             int bytes = bmpData.Stride * bmp.Height;
             byte[] rgbValues = new byte[bytes];
@@ -62,30 +65,31 @@ namespace ImageTransformer.Canvas
                             break;
                         }
 
-                        tmp = (Colormapping.ColormappingModels.ColormappingModels.EmoteMap)emotes.Where(x => x.red > red - i * 10 && x.red < red + i * 10).
-                            Where(x => x.green > green - i * 10 && x.green < green + i * 10).Where(x => x.blue > blue - i * 10 && x.blue < blue + i * 10).DefaultIfEmpty().First(); ;
-                       
+                        tmp = (Colormapping.ColormappingModels.ColormappingModels.EmoteMap)emotes.Where(x => x.red > red - i * colorAccuracy && x.red < red + i * colorAccuracy).
+                            Where(x => x.green > green - i * colorAccuracy && x.green < green + i * colorAccuracy).Where(x => x.blue > blue - i * colorAccuracy && x.blue < blue + i * colorAccuracy).DefaultIfEmpty().First(); ;
+
 
                         // Ugly fix
-                        if(tmp == null)
+                        if (tmp == null)
                         {
                             tmp = new Colormapping.ColormappingModels.ColormappingModels.EmoteMap();
                         }
                     }
 
                     Image emote = Image.FromFile(tmp.path);
-                    
-                    using (Graphics graphicss = Graphics.FromImage(bmp2))
+
+                    using (Graphics graphicss = Graphics.FromImage(bmpBlank))
                     {
-                        graphicss.DrawImage(emote, row, column, accuracy * sizeOperator, accuracy* sizeOperator);
+                        graphicss.DrawImage(emote, row * sizeOperator, column * sizeOperator, accuracy * sizeOperator, accuracy * sizeOperator);
                     }
-                   // Console.WriteLine(tmp.code);
-                    
+                    // Console.WriteLine(tmp.code);
+
                 }
-                
+
             }
 
-            bmp2.Save(output, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            bmpBlank.Save(output, System.Drawing.Imaging.ImageFormat.Jpeg);
             Console.WriteLine("Saved");
         }
     }
