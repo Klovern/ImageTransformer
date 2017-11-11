@@ -9,14 +9,14 @@ using Newtonsoft.Json.Linq;
 
 namespace ImageTransformer.APIClient.APIClientMapper
 {
-    public class APIClientMapper
+    public static class APIClientMapper
     {
+        static List<APIClientModels.FetchGlobalEmotesIdModel> list = new List<APIClientModels.FetchGlobalEmotesIdModel>();
 
-         public static List<APIClientModels.FetchGlobalEmotesIdModel> MapAPIClientIdJson(string data)
+        public static List<APIClientModels.FetchGlobalEmotesIdModel> MapAPIClientIdJson(string data)
         {
 
-            List<APIClientModels.FetchGlobalEmotesIdModel> list = new List<APIClientModels.FetchGlobalEmotesIdModel>();
-       
+
             var o = JObject.Parse(data);
 
             foreach (JToken child in o.Children())
@@ -49,9 +49,42 @@ namespace ImageTransformer.APIClient.APIClientMapper
                     }
                     list.Add(tmp);
                 }
-            }   
+            }
             return list;
         }
 
+        public static List<APIClientModels.FetchGlobalEmotesIdModel> MapAPISubscriberIdFromJson(string data, List<string> channelNames)
+        {
+
+            var o = JObject.Parse(data);
+
+            foreach (JToken child in o.Children())
+            {
+
+                foreach (JToken grandChild in child)
+                {
+                    
+
+                    if (channelNames.Contains(grandChild["channel_name"].ToString()))
+                    {
+                         foreach(var emote in grandChild["emotes"])
+                        {
+                            var tmp = new APIClientModels.FetchGlobalEmotesIdModel();
+
+                            tmp.id = (int)emote["id"];
+                            tmp.code = emote["code"].ToString();                         
+                            tmp.emoticon_set = (int)emote["emoticon_set"];
+
+                            list.Add(tmp);
+                            tmp = null;
+                            Console.WriteLine(emote);
+                        }
+                    }
+
+                }
+            }
+
+            return list;
+        }
     }
 }

@@ -19,13 +19,16 @@ namespace ImageTransformer.Canvas
         {
             var emotes = Colormapping.Colormapping.GetEmoteList();
 
-            string imageUrl = "C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media\\Donald2.jpg";
-            string output = "DonaldTrumpBlank.jpg";
+            string imageUrl = "C:\\Users\\s4d\\Desktop\\dan3.png";
+            string output = "Dan.jpg";
             Bitmap bmp = new Bitmap(imageUrl);
             Bitmap bmp2 = new Bitmap(imageUrl);
-            float sizeOperator = 2;
+            int sizeOperator = 10;
             int colorAccuracy = 10;
-            Bitmap bmpBlank = new Bitmap(bmp.Width * (int)sizeOperator, bmp.Height * (int)sizeOperator);
+            int width = bmp.Width * sizeOperator;
+            int height = bmp.Height * sizeOperator;
+            int accuracy = 1;
+            Bitmap bmpBlank = new Bitmap(width, height);
             // Lock the bitmap's bits.  
             Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
             BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
@@ -33,7 +36,7 @@ namespace ImageTransformer.Canvas
             // Get the address of the first line.
             IntPtr ptr = bmpData.Scan0;
 
-            int accuracy = 10;
+            
 
             // Declare an array to hold the bytes of the bitmap.
             int bytes = bmpData.Stride * bmp.Height;

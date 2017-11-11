@@ -30,5 +30,15 @@ namespace ImageTransformer.APIClient
             public string description { get; set; }
 
         }
+        public class FetchSubscriberIds
+        {
+
+            public string channelname { get; set; }
+
+            public int id { get; set; }
+
+
+        }
+
     }
 }

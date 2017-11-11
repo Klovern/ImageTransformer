@@ -48,6 +48,33 @@ namespace ImageTransformer.APIClient
             return emotes;
         }
 
+        public async Task<string> FetchSubscriberEmoteIDs(int channelId)
+        {
+            string path = string.Format("https://api.twitch.tv/kraken/chat/emoticons", Config.TwitchAuth.ClientId, 0);
+            string emotes = await this.client.GetStringAsync(path);
+            return emotes;
+        }
+
+        public async Task<List<APIClientModels.FetchGlobalEmotesIdModel>> FetchChannelIdFromString(List<string> channelNames)
+        {          
+            string path = string.Format("https://twitchemotes.com/api_cache/v3/subscriber.json", Config.TwitchAuth.ClientId, 0);
+
+            string subscriberJson = await this.client.GetStringAsync(path);
+
+            var result = APIClientMapper.APIClientMapper.MapAPISubscriberIdFromJson(subscriberJson, channelNames);
+
+            return result;
+        }
+
+        public async Task<string> FetchSubscriberEmotesFromId(List<APIClientModels.FetchSubscriberIds> channelIds)
+        {
+            string path = string.Format("https://api.twitch.tv/kraken/chat/emoticons", Config.TwitchAuth.ClientId, 0);
+            string emotes = await this.client.GetStringAsync(path);
+            return emotes;
+        }
+
+
+
 
         /*     Example of request          
         {
