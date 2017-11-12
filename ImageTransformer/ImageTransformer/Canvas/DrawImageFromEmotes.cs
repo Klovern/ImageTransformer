@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
+using System.IO;
 
 namespace ImageTransformer.Canvas
 {
@@ -15,19 +16,30 @@ namespace ImageTransformer.Canvas
     {
         // Testversion
 
-        public static void PrintEmoteRGBA()
+        public static byte[] PrintEmoteRGBA(byte[] image)
         {
+
+            string imageUrl = "C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media";
+            //Deploymentcode 
+            /*string imageUrl = $"{System.IO.Directory.GetCurrentDirectory()}\\Media\\tmp2.jpg";
+            string directory = $"{System.IO.Directory.GetCurrentDirectory()}\\Media";
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }*/
+
+            System.IO.File.WriteAllBytes(imageUrl, image);
             var emotes = Colormapping.Colormapping.GetEmoteList();
 
-            string imageUrl = "C:\\Users\\s4d\\Desktop\\dan3.png";
-            string output = "Dan.jpg";
+           
+            string output = "image.jpg";
             Bitmap bmp = new Bitmap(imageUrl);
-            Bitmap bmp2 = new Bitmap(imageUrl);
-            int sizeOperator = 10;
+            int sizeOperator = 2;
             int colorAccuracy = 10;
             int width = bmp.Width * sizeOperator;
             int height = bmp.Height * sizeOperator;
-            int accuracy = 1;
+            int accuracy = 14;
             Bitmap bmpBlank = new Bitmap(width, height);
             // Lock the bitmap's bits.  
             Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
@@ -55,7 +67,7 @@ namespace ImageTransformer.Canvas
             {
                 for (int row = 0; row < bmpData.Width; row += accuracy)
                 {
-                    Console.WriteLine($"COLUMN {column} ROW {row}");
+
                     var blue = (byte)(rgbValues[(column * stride) + (row * 3)]);
                     var green = (byte)(rgbValues[(column * stride) + (row * 3) + 1]);
                     var red = (byte)(rgbValues[(column * stride) + (row * 3) + 2]);
@@ -85,15 +97,24 @@ namespace ImageTransformer.Canvas
                     {
                         graphicss.DrawImage(emote, row * sizeOperator, column * sizeOperator, accuracy * sizeOperator, accuracy * sizeOperator);
                     }
-                    // Console.WriteLine(tmp.code);
+
+                    emote = null;
+
+                    
+
 
                 }
 
+                GC.Collect();
+
             }
 
+            string outputpath = $"C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media\\{output}";
 
-            bmpBlank.Save(output, System.Drawing.Imaging.ImageFormat.Jpeg);
-            Console.WriteLine("Saved");
+            bmpBlank.Save(outputpath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            return File.ReadAllBytes(outputpath);
+     
         }
     }
 }

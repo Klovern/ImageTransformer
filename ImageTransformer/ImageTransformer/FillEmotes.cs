@@ -29,7 +29,7 @@ namespace ImageTransformer
                 Colormapping.Colormapping.MapEmotesToColor(_path, emote.code);
             }
 
-            Canvas.DrawColors.CreateEmoteRgbaChart(Colormapping.Colormapping.GetEmoteList());
+            //Canvas.DrawColors.CreateEmoteRgbaChart(Colormapping.Colormapping.GetEmoteList());
 
         
 

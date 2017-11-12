@@ -14,15 +14,6 @@ namespace ImageTransformer
     {
         static void Main(string[] args)
         {
-            //FillEmotes.FillGlobalEmotesToDisk();
-
-            List<string> channelList = new List<string>() { "dansgaming" };
-            FillEmotes.FillSubscriberEmotes(channelList);
-            Canvas.DrawImageFromEmotes.PrintEmoteRGBA();
-
-
-
-            Console.ReadLine();
         }
     }
 }
