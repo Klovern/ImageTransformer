@@ -14,6 +14,7 @@ namespace ImageTransformer
     {
         static void Main(string[] args)
         {
+            FillEmotes.FillSubscriberEmotes(new List<string> { "dansgaming" });
         }
     }
 }

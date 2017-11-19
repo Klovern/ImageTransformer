@@ -55,20 +55,9 @@ namespace ImageTransformer
                 Colormapping.Colormapping.MapEmotesToColor(_path, emote.code);
             }
 
-            Canvas.DrawColors.CreateEmoteRgbaChart(Colormapping.Colormapping.GetEmoteList());
+            // Canvas.DrawColors.CreateEmoteRgbaChart(Colormapping.Colormapping.GetEmoteList());
 
-            /*
-                        foreach (var emote in result)
-                        {
-                            var binary = Task.Run(async () => { return await APIClient.FetchEmoteByteData(emote.id, 1.0); }).Result;
-
-                            var _path = FileStreams.FileStreams.WriteToDisk(binary, path, emote.code, "png");
-
-                            Colormapping.Colormapping.MapEmotesToColor(_path, emote.code);
-                        }
-
-                        
-                        */
+           
 
 
         }
