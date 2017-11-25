@@ -16,4 +16,3 @@ C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.exe
 C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.pdb
-C:\Users\s4d\Documents\GitHub\ImageTransformer\ImageTransformer\ImageTransformer\ImageTransformer\obj\Debug\ImageTransformer.csprojResolveAssemblyReference.cache

@@ -19,7 +19,7 @@ namespace ImageTransformer.Canvas
         public static byte[] PrintEmoteRGBA(byte[] image)
         {
 
-            string imageUrl = "C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media\\tmp.jpg";
+            string imageUrl = "C:\\Users\\s4d\\Documents\\GitHub\\ImageTransformer\\ImageTransformer\\ImageTransformer\\ImageTransformer\\Media";
             //Deploymentcode 
             /*string imageUrl = $"{System.IO.Directory.GetCurrentDirectory()}\\Media\\tmp2.jpg";
             string directory = $"{System.IO.Directory.GetCurrentDirectory()}\\Media";
